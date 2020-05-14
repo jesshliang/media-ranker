@@ -81,49 +81,106 @@ describe Work do
   end
 
   describe "custom methods" do
-  #   before do
+    describe "top_media" do
+      it "chooses a single random Work if there is more than 1" do
+        expect(Work.top_media).must_be_instance_of Work
+      end
 
-  #   end
+      it "does not select a work if there are none" do
+        6.times do
+          Work.destroy(Work.first.id)
+        end
 
-  #   describe "top_media" do
-  #     it "populated" do
+        expect(Work.top_media).must_be_nil
+      end
+    end
+
+    describe "top of a specific media" do
+      describe "> 10" do
+        before do
+          10.times do
+            Work.create(
+              category: 'book', 
+              title: 'Test Book',
+              creator: 'Test Author',
+              publication_year: '1999',
+              description: "I'm a test book i'm a test book.",
+            )
+          end
+
+          10.times do
+            Work.create(
+              category: 'movie', 
+              title: 'Test movie',
+              creator: 'Test Author',
+              publication_year: '1999',
+              description: "I'm a test movie i'm a test movie.",
+            )
+          end
+
+          10.times do
+            Work.create(
+              category: 'album', 
+              title: 'Test album',
+              creator: 'Test Author',
+              publication_year: '1999',
+              description: "I'm a test album i'm a test album.",
+            )
+          end
+        end
+
+        it "for books" do
+          expect(Work.top_books.length).must_equal 10
+        end
+
+        it "for albums" do
+          expect(Work.top_albums.length).must_equal 10
+        end
+
+        it "for movies" do
+          expect(Work.top_movies.length).must_equal 10
+        end
+
+      end
+
+      describe "< 10" do
+        it "for books" do
+          expect(Work.top_books.length).must_equal 2
+        end
+
+        it "for albums" do
+          expect(Work.top_albums.length).must_equal 2
+        end
+
+        it "for movies" do
+          expect(Work.top_movies.length).must_equal 2
+        end
+      end
+
+
+      describe "no medias" do
+        before do
+          6.times do
+            Work.destroy(Work.first.id)
+          end
+        end
+
+        it "for books" do
+          expect(Work.top_books.length).must_equal 0
+        end
+
+        it "for albums" do
+          expect(Work.top_albums.length).must_equal 0
+        end
+
+        it "for movies" do
+          expect(Work.top_movies.length).must_equal 0
+        end
         
-  #     end
+      end
 
-  #     it "none" do
+    end
 
-  #     end
-  #   end
-
-  #   describe "top_books" do
-  #     it "populated" do
-        
-  #     end
-
-  #     it "none" do
-
-  #     end
-  #   end
-
-  #   describe "top_albums" do
-  #     it "populated" do
-        
-  #     end
-
-  #     it "none" do
-
-  #     end
-  #   end
-
-  #   describe "top_movies" do
-  #     it "populated" do
-        
-  #     end
-
-  #     it "none" do
-
-  #     end
-  #   end
   end
 
 end

@@ -1,0 +1,36 @@
+new_work:
+  category: book 
+  title: Test Book
+  creator: Test Author
+  publication_year: 1999
+  description: I'm a test book i'm a test book.
+dark_star:
+  category: movie 
+  title: Dark Star
+  creator: Dark Star
+  publication_year: 1966
+  description: Non eos necessitatibus illo.
+spilt_nuts:
+  category: album 
+  title: Spilt Nuts
+  creator: Victor Huel
+  publication_year: 1983
+  description: Dolorem omnis sequi modi.
+huggy_equinox:
+  category: book 
+  title: Huggy Equinox
+  creator: Dorine Gorczany
+  publication_year: 1956
+  description: Fugit earum sed commodi.
+postmodern:
+  category: movie 
+  title: Postmodern
+  creator: Russell Fritsch
+  publication_year: 1999
+  description: Et totam dolores suscipit.
+split_been:
+  category: album 
+  title: Split Been
+  creator: Ms. Owen Zieme
+  publication_year: 1970
+  description: Rerum id placeat occaecati. 

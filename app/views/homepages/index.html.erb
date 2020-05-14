@@ -1,4 +1,5 @@
 <section class="spotlight">
+	<% if Work.top_media != nil %>
 	<h2>
 		Media Spotlight: <%= link_to Work.top_media.title %>
 		by <%= Work.top_media.creator %>
@@ -6,6 +7,9 @@
 	<p>
 		<%= Work.top_media.description %>
 	</p>
+	<% else %>
+	<h2>No medias added.</h2>
+	<% end %>
 </section>
 
 <section class="top-ten__container">
