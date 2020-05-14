@@ -14,4 +14,22 @@ class WorksController < ApplicationController
 		end
 	end
 
+	def new
+		@work = Work.new
+	end
+
+	def create
+		@work = Work.new(work_params)
+
+		if @work.save
+			flash[:success] = "#{@work.title} added."
+			redirect_to work_path(@work.id)
+			return
+		else
+			flash.now[:failure] = "#{@work.title} could not be added."
+			render :new, status: :bad_request
+			return
+		end
+	end
+
 end
