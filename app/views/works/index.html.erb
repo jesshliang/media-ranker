@@ -1,6 +1,7 @@
 <h2>All Works</h2>
+
 <section>
-	<h3>Albums</h3>
+	<h3>Movies</h3>
 
 	<table>
 		<tr>
@@ -10,19 +11,19 @@
 			<th>Description</th>
 		</tr>
 
-			<% @albums.each do |album| %>
+			<% @movies.each do |movie| %>
 				<tr>
 					<td>
-						<%= link_to album.title, work_path(album) %>
+						<%= link_to movie.title, work_path(movie) %>
 					</td>
 					<td>
-						<%= album.creator %>
+						<%= movie.creator %>
 					</td>
 					<td>
-						<%= album.publication_year %>
+						<%= movie.publication_year %>
 					</td>
 					<td>
-						<%= album.description %>
+						<%= movie.description %>
 					</td>
 				</tr>
 
@@ -55,6 +56,38 @@
 					</td>
 					<td>
 						<%= book.description %>
+					</td>
+				</tr>
+
+			<% end %>
+
+	</table>
+</section>
+
+<section>
+	<h3>Albums</h3>
+
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Creator</th>
+			<th>Publication Year</th>
+			<th>Description</th>
+		</tr>
+
+			<% @albums.each do |album| %>
+				<tr>
+					<td>
+						<%= link_to album.title, work_path(album) %>
+					</td>
+					<td>
+						<%= album.creator %>
+					</td>
+					<td>
+						<%= album.publication_year %>
+					</td>
+					<td>
+						<%= album.description %>
 					</td>
 				</tr>
 

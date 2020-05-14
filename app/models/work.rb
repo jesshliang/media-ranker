@@ -14,4 +14,9 @@ class Work < ApplicationRecord
 		return albums.sample(10)
 	end
 
+	def self.top_movies
+		albums = Work.where(category: "movie")
+		return albums.sample(10)
+	end
+
 end

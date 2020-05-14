@@ -28,6 +28,8 @@
 		</section>
 		<section>
 			<%= f.label :category %><br>
+				<%= f.label :category, "Movie", :value => "movie"  %>
+				<%= f.radio_button :category, "movie" %>
 				<%= f.label :category, "Book", :value => "book"  %>
 				<%= f.radio_button :category, "book" %>
 				<%= f.label :category, "Album", :value => "album"  %>
