@@ -1,1 +1,54 @@
 HOMEPAGE
+<section class="spotlight">
+	<h2>This here be the spotlight area</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</p>
+</section>
+
+<section class="top-ten__container">
+	<section class="top-ten__list-container">
+		<h2>Top Movies</h2>
+
+		<ul class="list-group top-ten-__list">
+			<li class="list-group-item">
+				<h4>
+					LINK TO ITEM + TITLE OF ITEM
+					<small class="top-ten__creator"> by AUTHOR</small>
+				</h4>
+				<p># VOTES</p>
+			</li>
+		</ul>
+	</section>
+
+	<section class="top-ten__list-container">
+		<h2>Top Books</h2>
+		<ul class="list-group top-ten-__list">
+			<% Work.top_books.each do |work| %>
+			<li class="list-group-item">
+				<h4>
+					<%= link_to work.title, work_path(work.id) %>
+					<small class="top-ten__creator">by <%= work.creator %></small>
+				</h4>
+				<p># VOTES</p>
+			</li>
+			<% end %>
+		</ul>
+	</section>
+
+	<section class="top-ten__list-container">
+		<h2>Top Albums</h2>
+		<ul class="list-group top-ten-__list">
+			<% Work.top_albums.each do |work| %>
+			<li class="list-group-item">
+				<h4>
+					<%= link_to work.title, work_path(work.id) %>
+					<small class="top-ten__creator">by <%= work.creator %></small>
+				</h4>
+				<p># VOTES</p>
+			</li>
+			<% end %>
+		</ul>
+	</section>
+
+</section>
