@@ -1,6 +1,6 @@
 require 'csv'
 
-WORK_FILE = Rails.root.join('db', 'works-seeds.csv')
+WORK_FILE = 'db/works_seeds.csv'
 puts "Loading raw works data from #{WORK_FILE}"
 
 work_failures = []
