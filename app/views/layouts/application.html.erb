@@ -11,15 +11,19 @@
 
   <body>
     <header>
+      <h1>
+        <%= link_to 'Media Ranker', root_path %>\
+        <small>Ranking the Best of Everything</small>
+      </h1>
 
       <nav>
         <ul>
-          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'View Top Media', new_work_path %></li>
+          <li><%= link_to 'View All Media', works_path %></li>
           <li><%= link_to 'Add New Work', new_work_path %></li>
-          <li><%= link_to 'View All Works', works_path %></li>
+          <li>View All Users Link</li>
         </ul>
       </nav>
-
     </header>
 
     <main>
