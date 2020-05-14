@@ -1,44 +1,5 @@
 <h2>Add a New Work</h2>
 
 <section>
-<%= form_with model: @work  do |f| %>
-	<div class="form">
-		<% if @work.errors.any? %>
-			<ul>
-				<% @work.errors.each do |column, message| %>
-					<li>
-						<%= column.capitalize %> <%= message %>.
-					</li>
-				<% end %>
-			</ul>
-		<% end %>
-
-		<section>
-			<%= f.label :title %><br>
-			<%= f.text_field :title %>
-		</section>
-		<section>
-			<%= f.label :creator %><br>
-			<%= f.text_field :creator %>
-		</section>
-		<section>
-			<%= f.label :publication_year %><br>
-			<%= f.text_field :publication_year %>
-		</section>
-		<section>
-			<%= f.label :description %><br>
-			<%= f.text_field :description %>
-		</section>
-		<section>
-			<%= f.label :category %><br>
-				<%= f.label :category, "Book", :value => "book"  %>
-				<%= f.radio_button :category, "book" %>
-				<%= f.label :category, "Album", :value => "album"  %>
-				<%= f.radio_button :category, "album" %>
-		</section>
-		<section>
-			<%= f.submit 'Add New Work' %>
-		</section>
-	</div>
-<% end %>
+	<%= render partial: "form", locals: { action_name: "Add New Work" } %>
 </section>

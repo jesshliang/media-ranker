@@ -32,6 +32,47 @@ class WorksController < ApplicationController
 		end
 	end
 
+	def edit
+		@work = Work.find_by(id: params[:id])
+
+		if @work.nil?
+			redirect_to works_path
+			return
+		end
+	end
+
+	def update
+		@work = Work.find_by(id: params[:id])
+
+		if @work.nil?
+			head :not_found
+			return
+		elsif @work.update(driver_params)
+			redirect_to work_path(@work.id)
+      flash[:success] = "#{@work.title} successfully updated"
+      return
+		else
+			flash[:failure] = "#{@work.title} could not be updated."
+      render :edit
+      return
+    end
+	end
+
+	# def destroy
+	# 	@driver = Driver.find_by(id: params[:id])
+
+	# 	if @driver.nil?
+	# 		redirect_to drivers_path
+	# 		return
+	# 	end
+
+	# 	@driver.destroy
+
+	# 	redirect_to drivers_path
+	# 	flash[:success] = 'Driver removed'
+	# 	return
+	# end
+
 	private
 
 	def work_params
