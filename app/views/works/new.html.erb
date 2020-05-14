@@ -31,10 +31,13 @@
 		</section>
 		<section>
 			<%= f.label :category %><br>
-			THIS WILLBE THE CATEGORY CHECKOBX
+				<%= f.label :category, "Book", :value => "book"  %>
+				<%= f.radio_button :category, "book" %>
+				<%= f.label :category, "Album", :value => "album"  %>
+				<%= f.radio_button :category, "album" %>
 		</section>
 		<section>
-			<%= f.submit action_name %>
+			<%= f.submit 'Add New Work' %>
 		</section>
 	</div>
 <% end %>
