@@ -1,5 +1,9 @@
 class Work < ApplicationRecord
 
+	def self.top_media
+		return Work.all.sample
+	end
+
 	def self.top_books
 		books = Work.where(category: "book")
 		return books.sample(10)
