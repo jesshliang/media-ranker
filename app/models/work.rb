@@ -1,4 +1,9 @@
 class Work < ApplicationRecord
+	validates :category, presence: true
+	validates :title, presence: true
+	validates :creator, presence: true
+	validates :publication_year, presence: true
+	validates :description, presence: true
 
 	def self.top_media
 		return Work.all.sample
