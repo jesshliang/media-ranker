@@ -13,7 +13,7 @@
 			<% @albums.each do |album| %>
 				<tr>
 					<td>
-						<%= album.title %>
+						<%= link_to album.title, work_path(album) %>
 					</td>
 					<td>
 						<%= album.creator %>
@@ -45,7 +45,7 @@
 			<% @books.each do |book| %>
 				<tr>
 					<td>
-						<%= book.title %>
+						<%= link_to book.title, work_path(book) %>
 					</td>
 					<td>
 						<%= book.creator %>
