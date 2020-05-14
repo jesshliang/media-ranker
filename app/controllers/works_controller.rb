@@ -58,20 +58,20 @@ class WorksController < ApplicationController
     end
 	end
 
-	# def destroy
-	# 	@driver = Driver.find_by(id: params[:id])
+	def destroy
+		@work = Work.find_by(id: params[:id])
 
-	# 	if @driver.nil?
-	# 		redirect_to drivers_path
-	# 		return
-	# 	end
+		if @work.nil?
+			flash[:failure] = "#{@work.title} could not be deleted."
+			redirect_to works_path
+			return
+		end
 
-	# 	@driver.destroy
-
-	# 	redirect_to drivers_path
-	# 	flash[:success] = 'Driver removed'
-	# 	return
-	# end
+		@work.destroy
+		redirect_to works_path
+		flash[:success] = "#{@work.title} was deleted."
+		return
+	end
 
 	private
 
