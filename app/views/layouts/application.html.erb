@@ -24,7 +24,13 @@
           <li>View All Users Link</li>
         </ul>
         <ul>
-          <li><%= link_to 'Login', login_path %></li>
+          <li>
+            <% if session[:user_id] %>
+              <%= link_to 'Logout', logout_path, method: :post %>
+            <% else %>
+              <%= link_to 'Login', login_path %>
+            <% end %>
+          </li>
         </ul>
       </nav>
     </header>
