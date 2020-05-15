@@ -38,7 +38,19 @@ class UsersController < ApplicationController
     else
       flash[:error] = "No user was logged in."
     end
-    
+
     redirect_to root_path
   end
+
+  def current
+    @user = User.find_by(id: session[:user_id])
+
+    if @user.nil?
+      flash[:error] = "You must be logged in to view this page."
+      redirect_to root_path
+      return
+    end
+      
+  end
+
 end

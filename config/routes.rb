@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
   get "/users/current", to: 'users#current', as: 'current_user'
 
-  # get 'users/login_form'
-  # get 'users/login'
   root to: 'homepages#index'
 
   resources :works
