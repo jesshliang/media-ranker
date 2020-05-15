@@ -11,24 +11,28 @@ describe UsersController do
   describe "logging in func" do
 
     it "can login a new user" do
-      user_hash = {
-        user: {
-          username: 'whiskers'
-        }
-      }
-
-      expect {
-        post login_path, params: user_hash
+      user = nil
+      expect{
+        user = login()
       }.must_differ 'User.count', 1
 
       must_respond_with :redirect
 
-      user = User.find_by(username: user_hash[:user][:username])
       expect(user).wont_be_nil
       expect(session[:user_id]).must_equal user.id
       expect(user.username).must_equal user_hash[:user][:username]
     end
 
+    it "can login an existing user" do
+      user = User.create(username: 'paws')
+
+      expect {
+        login(user.username)
+      }.wont_change 'User.count'
+
+      expect(session[:user_id]).must_equal user.id
+    end
+    
   end
 
 end

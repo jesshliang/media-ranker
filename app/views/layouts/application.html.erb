@@ -23,10 +23,19 @@
           <li><%= link_to 'Add New Work', new_work_path %></li>
           <li>View All Users Link</li>
         </ul>
+        <ul>
+          <li><%= link_to 'Login', login_path %></li>
+        </ul>
       </nav>
     </header>
 
     <main>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
 
