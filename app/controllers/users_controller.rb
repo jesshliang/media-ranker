@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   end
 
   def login
-    user = User.find_by(username: params[:user][:username])
+    user = User.find_by(username: user_params[:username])
 
     if user.nil?
-      user = User.new(username: params[:user][:username])
+      user = User.new(username: user_params[:username])
       
       if !user.save
         flash[:error] = "Unable to login."
@@ -51,6 +51,12 @@ class UsersController < ApplicationController
       return
     end
       
+  end
+
+  private 
+
+  def user_params
+    return params.require(:user).permit(:username)
   end
 
 end
