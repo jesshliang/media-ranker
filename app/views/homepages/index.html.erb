@@ -22,7 +22,7 @@
 					<%= link_to work.title, work_path(work.id) %>
 					<small class="top-ten__creator">by <%= work.creator %></small>
 				</h4>
-				<p># VOTES</p>
+				<p><%= work.votes.count %></p>
 			</li>
 			<% end %>
 		</ul>
