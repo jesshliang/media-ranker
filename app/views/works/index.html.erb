@@ -5,14 +5,19 @@
 
 	<table>
 		<tr>
+			<th>Votes</th>
 			<th>Title</th>
 			<th>Creator</th>
 			<th>Publication Year</th>
 			<th>Description</th>
+			<th>Upvote</th>
 		</tr>
 
 			<% @movies.each do |movie| %>
 				<tr>
+					<td>
+						<%= movie.votes.count %>
+					</td>
 					<td>
 						<%= link_to movie.title, work_path(movie) %>
 					</td>
@@ -24,6 +29,9 @@
 					</td>
 					<td>
 						<%= movie.description %>
+					</td>
+					<td>
+						Upvote
 					</td>
 				</tr>
 
@@ -37,14 +45,19 @@
 
 	<table>
 		<tr>
+			<th>Votes</th>
 			<th>Title</th>
 			<th>Creator</th>
 			<th>Publication Year</th>
 			<th>Description</th>
+			<th>Upvote</th>
 		</tr>
 
 			<% @books.each do |book| %>
 				<tr>
+				  <td>
+						<%= book.votes.count %>
+					</td>
 					<td>
 						<%= link_to book.title, work_path(book) %>
 					</td>
@@ -56,6 +69,9 @@
 					</td>
 					<td>
 						<%= book.description %>
+					</td>
+					<td>
+						Upvote
 					</td>
 				</tr>
 
@@ -69,14 +85,19 @@
 
 	<table>
 		<tr>
+			<th>Votes</th>
 			<th>Title</th>
 			<th>Creator</th>
 			<th>Publication Year</th>
 			<th>Description</th>
+			<th>Upvote</th>
 		</tr>
 
 			<% @albums.each do |album| %>
 				<tr>
+					<td>
+						<%= album.votes.count %>
+					</td>
 					<td>
 						<%= link_to album.title, work_path(album) %>
 					</td>
@@ -88,6 +109,9 @@
 					</td>
 					<td>
 						<%= album.description %>
+					</td>
+					<td>
+						Upvote
 					</td>
 				</tr>
 

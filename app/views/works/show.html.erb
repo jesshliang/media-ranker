@@ -1,6 +1,12 @@
 <h2><%= @work.title %></h2>
+<ul>
+	<li><%= @work.votes.count %> votes</li>
+</ul>
 
 <ul>
+	<li>
+		<%= link_to "Upvote #{@work.title}", work_votes_path(@work), method: :post %>
+	</li>
 	<li>
 		<%= link_to "Edit #{@work.title}", edit_work_path(@work) %>
 	</li>
