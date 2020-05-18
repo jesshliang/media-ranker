@@ -27,6 +27,8 @@ class VotesController < ApplicationController
 			)
 
 			if @vote.save
+				@vote.count_votes(params[:work_id], session[:user_id])
+
 				flash[:success] = 'Upvoted!'
 				redirect_to works_path
 				return
