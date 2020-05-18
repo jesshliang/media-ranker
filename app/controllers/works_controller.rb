@@ -2,11 +2,11 @@ class WorksController < ApplicationController
 
 	def index
 		@movies = Work.where(category: 'movie')
-									.order(vote_count: :desc)
+									.order(vote_count: :desc, title: :asc)
 		@books = Work.where(category: 'book')
-								 .order(vote_count: :desc)
+								 .order(vote_count: :desc, title: :asc)
 		@albums = Work.where(category: 'album')
-									.order(vote_count: :desc)
+									.order(vote_count: :desc, title: :asc)
 	end
 
 	def show

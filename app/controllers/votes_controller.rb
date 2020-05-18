@@ -1,12 +1,9 @@
 class VotesController < ApplicationController
 
 	def create
-
-		if session[:user_id]
-			# If the user is signed in,
+		if session[:user_id] # If the user is signed in,
 			vote
-		else
-			# If the user is not signed in
+		else # If the user is not signed in
 			flash[:unauthorized] = 'You cannot vote unless you are logged in.'
 			redirect_to root_path
 			return

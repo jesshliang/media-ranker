@@ -10,27 +10,27 @@ class Work < ApplicationRecord
 
 	def self.top_media
 		return Work.all
-							 .order(vote_count: :desc)
+							 .order(vote_count: :desc, title: :asc)
 							 .first
 	end
 
 	def self.top_books
 		books = Work.where(category: 'book')
-								.order(vote_count: :desc)
+								.order(vote_count: :desc, title: :asc)
 								.limit(10)
 		return books
 	end
 
 	def self.top_albums
 		albums = Work.where(category: 'album')
-								 .order(vote_count: :desc)
+								 .order(vote_count: :desc, title: :asc)
 								 .limit(10)
 		return albums
 	end
 
 	def self.top_movies
 		movies = Work.where(category: 'movie')
-								 .order('vote_count DESC')
+								 .order(vote_count: :desc, title: :asc)
 								 .limit(10)
 		return movies
 	end
