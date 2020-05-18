@@ -13,18 +13,28 @@ class Work < ApplicationRecord
 	end
 
 	def self.top_books
-		books = Work.where(category: "book")
-		return books.sample(10)
+		books = Work.includes(:votes)
+								.where(category: "book")
+								.references(:votes)
+								.limit(10)
+		return books
 	end
 
 	def self.top_albums
-		albums = Work.where(category: "album")
-		return albums.sample(10)
+		albums = Work.joins(:votes)
+		  					 .where(category: "album")
+			  				 .group('works.id')
+								 .order('count(votes.id) DESC')
+								 .limit(10)
+		return albums
 	end
 
 	def self.top_movies
-		albums = Work.where(category: "movie")
-		return albums.sample(10)
+		movies = Work.includes(:votes)
+								 .where(category: "movie")
+								 .references(:votes)
+								 .limit(10)
+		return movies
 	end
 
 end
