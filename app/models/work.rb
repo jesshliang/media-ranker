@@ -9,7 +9,9 @@ class Work < ApplicationRecord
 	validates :description, presence: true
 
 	def self.top_media
-		return Work.all.sample
+		return Work.all
+							 .order(vote_count: :desc)
+							 .first
 	end
 
 	def self.top_books
