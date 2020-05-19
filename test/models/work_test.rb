@@ -118,118 +118,124 @@ describe Work do
       end
     end
 
-    # describe "top of a specific media" do
-    #   describe "> 10" do
-    #     before do
-    #       10.times do
-    #         Work.create(
-    #           category: 'book', 
-    #           title: 'Test Book',
-    #           creator: 'Test Author',
-    #           publication_year: '1999',
-    #           description: "I'm a test book i'm a test book.",
-    #         )
-    #       end
+    describe "top of a specific media" do
+      before do 
+        Vote.all.each do |vote|
+          Vote.destroy(vote.id)
+        end
+      end
 
-    #       10.times do
-    #         Work.create(
-    #           category: 'movie', 
-    #           title: 'Test movie',
-    #           creator: 'Test Author',
-    #           publication_year: '1999',
-    #           description: "I'm a test movie i'm a test movie.",
-    #         )
-    #       end
+      describe "> 10" do
+        before do
+          10.times do
+            Work.create(
+              category: 'book', 
+              title: 'Test Book',
+              creator: 'Test Author',
+              publication_year: '1999',
+              description: "I'm a test book i'm a test book.",
+            )
+          end
 
-    #       10.times do
-    #         Work.create(
-    #           category: 'album', 
-    #           title: 'Test album',
-    #           creator: 'Test Author',
-    #           publication_year: '1999',
-    #           description: "I'm a test album i'm a test album.",
-    #         )
-    #       end
-    #     end
+          10.times do
+            Work.create(
+              category: 'movie', 
+              title: 'Test movie',
+              creator: 'Test Author',
+              publication_year: '1999',
+              description: "I'm a test movie i'm a test movie.",
+            )
+          end
 
-    #     it "for books" do
-    #       expect(Work.top_books.length).must_equal 10
-    #     end
+          10.times do
+            Work.create(
+              category: 'album', 
+              title: 'Test album',
+              creator: 'Test Author',
+              publication_year: '1999',
+              description: "I'm a test album i'm a test album.",
+            )
+          end
+        end
 
-    #     it "for albums" do
-    #       expect(Work.top_albums.length).must_equal 10
-    #     end
+        it "for books" do
+          expect(Work.top_books.length).must_equal 10
+        end
 
-    #     it "for movies" do
-    #       expect(Work.top_movies.length).must_equal 10
-    #     end
+        it "for albums" do
+          expect(Work.top_albums.length).must_equal 10
+        end
 
-    #   end
+        it "for movies" do
+          expect(Work.top_movies.length).must_equal 10
+        end
 
-    #   describe "< 10" do
-    #     it "for books" do
-    #       expect(Work.top_books.length).must_equal 2
-    #     end
+      end
 
-    #     it "for albums" do
-    #       expect(Work.top_albums.length).must_equal 2
-    #     end
+      describe "< 10" do
+        it "for books" do
+          expect(Work.top_books.length).must_equal 2
+        end
 
-    #     it "for movies" do
-    #       expect(Work.top_movies.length).must_equal 2
-    #     end
-    #   end
+        it "for albums" do
+          expect(Work.top_albums.length).must_equal 2
+        end
 
-    #   describe "no medias" do
-    #     before do
-    #       6.times do
-    #         Work.destroy(Work.first.id)
-    #       end
-    #     end
+        it "for movies" do
+          expect(Work.top_movies.length).must_equal 2
+        end
+      end
 
-    #     it "for books" do
-    #       expect(Work.top_books.length).must_equal 0
-    #     end
+      describe "no medias" do
+        before do
+          6.times do
+            Work.destroy(Work.first.id)
+          end
+        end
 
-    #     it "for albums" do
-    #       expect(Work.top_albums.length).must_equal 0
-    #     end
+        it "for books" do
+          expect(Work.top_books.length).must_equal 0
+        end
 
-    #     it "for movies" do
-    #       expect(Work.top_movies.length).must_equal 0
-    #     end
+        it "for albums" do
+          expect(Work.top_albums.length).must_equal 0
+        end
+
+        it "for movies" do
+          expect(Work.top_movies.length).must_equal 0
+        end
         
-    #   end
+      end
 
-    #   describe "will order works by highest vote" do
-    #     before do
-    #       @vote1 = Vote.create(user_id: users(:wizard).id, work_id: works(:postmodern).id)
-    #       @vote1.count_votes(works(:postmodern).id, users(:wizard).id)
-    #       @vote2 = Vote.create(user_id: users(:wizard).id, work_id: works(:huggy_equinox).id)
-    #       @vote2.count_votes(works(:huggy_equinox).id, users(:wizard).id)
-    #       @vote3 = Vote.create(user_id: users(:wizard).id, work_id: works(:spilt_nuts).id)
-    #       @vote3.count_votes(works(:spilt_nuts).id, users(:wizard).id)
-    #       @vote4 = Vote.create(user_id: users(:witch).id, work_id: works(:spilt_nuts).id)
-    #       @vote4.count_votes(works(:spilt_nuts).id, users(:witch).id)
-    #     end
+      describe "will order works by highest vote" do
+        before do
+          @vote1 = Vote.create(user_id: users(:wizard).id, work_id: works(:postmodern).id)
+          @vote1.count_votes(works(:postmodern).id, users(:wizard).id)
+          @vote2 = Vote.create(user_id: users(:wizard).id, work_id: works(:huggy_equinox).id)
+          @vote2.count_votes(works(:huggy_equinox).id, users(:wizard).id)
+          @vote3 = Vote.create(user_id: users(:wizard).id, work_id: works(:spilt_nuts).id)
+          @vote3.count_votes(works(:spilt_nuts).id, users(:wizard).id)
+          @vote4 = Vote.create(user_id: users(:witch).id, work_id: works(:spilt_nuts).id)
+          @vote4.count_votes(works(:spilt_nuts).id, users(:witch).id)
+        end
 
-    #     it "will list the highest voted work at the top for all works" do
-    #       expect(Work.top_media.title).must_equal 'Spilt Nuts'
-    #     end
+        it "will list the highest voted work at the top for all works" do
+          expect(Work.top_media.title).must_equal 'Spilt Nuts'
+        end
 
-    #     it "will list the highest voted book for top books" do
-    #       expect(Work.top_books[0].title).must_equal 'Huggy Equinox'
-    #     end
+        it "will list the highest voted book for top books" do
+          expect(Work.top_books[0].title).must_equal 'Huggy Equinox'
+        end
 
-    #     it "will list the highest voted movie for top movies" do
-    #       expect(Work.top_movies[0].title).must_equal 'Postmodern'
-    #     end
+        it "will list the highest voted movie for top movies" do
+          expect(Work.top_movies[0].title).must_equal 'Postmodern'
+        end
 
-    #     it "will list the highest voted album for top albums" do
-    #       expect(Work.top_albums[0].title).must_equal 'Spilt Nuts'
-    #     end
-    #   end
-    # end
+        it "will list the highest voted album for top albums" do
+          expect(Work.top_albums[0].title).must_equal 'Spilt Nuts'
+        end
+      end
+    end
 
     describe "vote_date" do
       it "finds the correct vote date" do

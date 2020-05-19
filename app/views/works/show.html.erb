@@ -1,6 +1,5 @@
 <h2><%= @work.title %></h2>
 <ul>
-	<li><strong><%= @work.vote_count %> votes</strong></li>
 	<li><strong>Created By: </strong><%= @work.creator %></li>
 	<li><strong>Published: </strong><%= @work.publication_year %></li>
 	<li><strong>Description: </strong><br><%= @work.description %></li>
@@ -17,3 +16,26 @@
 		<%= link_to 'Delete', work_path(@work), method: :delete, data: {confirm: "Are you sure?"}, class: 'nav-link' %>
 	</li>
 </ul>
+
+<section class="votes_for_work--table">
+	<h3><%= @work.vote_count %> Votes for This <%= @work.category.capitalize %></h3>
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>User</th>
+				<th>Date</th>
+			</tr>
+			</thead>
+
+			<% @work.votes.each do |vote| %>
+				<tr>
+					<td>
+						<%= vote.find_user(vote.user_id) %>
+					</td>
+					<td>
+						<%= vote.created_at.strftime("%m-%d-%Y") %>
+					</td>
+				</tr>
+			<% end %>
+	</table>
+</section>

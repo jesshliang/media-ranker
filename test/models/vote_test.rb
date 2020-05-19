@@ -79,4 +79,15 @@ describe Vote do
     end
   end
 
+  describe "find user" do
+    it "finds the correct user" do
+      work = Work.find_by(title: 'Dark Star')
+      user = User.find_by(username: 'wizard')
+      vote = Vote.create(user_id: user.id, work_id: work.id)
+
+      result = vote.find_user(user.id)
+      expect(result).must_equal user.username
+    end
+  end
+
 end

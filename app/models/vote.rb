@@ -12,4 +12,7 @@ class Vote < ApplicationRecord
 		assoc_user.save
 	end
 
+	def find_user(id)
+		return User.find_by(id: id).username
+	end
 end
