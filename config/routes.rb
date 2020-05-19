@@ -11,7 +11,5 @@ Rails.application.routes.draw do
   resources :works do
     resources :votes, only: [:create]
   end
-  
-  resources :votes, only: [:create]
 
 end
