@@ -18,10 +18,20 @@ describe Vote do
   end
 
   describe "relationships" do
+    before do
+      Vote.all.each do |vote|
+        Vote.destroy(vote.id)
+      end
+    end
+
     it "vote can have work" do
       new_vote.save
       Vote.create(user_id: User.find_by(username: 'wizard').id, work_id: Work.find_by(title: 'Dark Star').id)
 
+      Work.find_by(title: 'Dark Star').votes.each do |vote|
+        puts User.find_by(id:vote.user_id).username
+        
+      end
       expect(Work.find_by(title: 'Dark Star').votes.count).must_equal 2
       expect(new_vote.work).must_be_instance_of Work
     end

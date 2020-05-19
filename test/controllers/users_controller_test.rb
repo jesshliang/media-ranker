@@ -47,23 +47,4 @@ describe UsersController do
     end
   end
 
-  describe "current user" do
-
-    it "can return current user page if user is logged in" do
-      login()
-
-      get current_user_path
-
-      must_respond_with :success
-    end
-
-    it "does not allow access to current user page if user is not logged in" do
-      get current_user_path
-
-      must_respond_with :redirect
-      expect(flash[:error]).must_equal "You must be logged in to view this page."
-    end
-
-  end
-
 end
