@@ -1,0 +1,49 @@
+<h2>User: <%= @user.username %></h2>
+<ul>
+	<li><%= @user.vote_count %> total works voted on</li>
+	<li>Joined site on <%= @user.created_at.strftime("%m-%d-%Y") %></li>
+</ul>
+
+<section>
+	<h3>Voted Works</h3>
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Title</th>
+				<th>Creator</th>
+				<th>Publication Year</th>
+				<th>Category</th>
+				<th>Voted On</th>
+			</tr>
+			</thead>
+
+			<% @user.works.each do |work| %>
+				<tr>
+					<td>
+						<%= link_to work.title, work_path(work) %>
+					</td>
+					<td>
+						<%= work.creator %>
+					</td>
+					<td>
+						<%= work.publication_year %>
+					</td>
+					<td>
+						<%= work.category.capitalize %>
+					</td>
+					<td>
+						<%= work.vote_date(@user) %>
+					</td>
+				</tr>
+			<% end %>
+	</table>
+
+	<ul>
+		<li>
+			<%= link_to 'See All Users', users_path %>
+		</li>
+		<li>
+			<%= link_to 'Back to Media List', works_path %>
+		</li>
+	</ul>
+</section>

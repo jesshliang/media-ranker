@@ -35,4 +35,7 @@ class Work < ApplicationRecord
 		return movies
 	end
 
+	def vote_date(user)
+		return Vote.find_by(work_id: self.id, user_id: user.id).created_at.strftime("%m-%d-%Y")
+	end
 end
