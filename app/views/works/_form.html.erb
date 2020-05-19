@@ -10,23 +10,23 @@
 			</ul>
 		<% end %>
 
-		<section>
+		<section class="form-group">
 			<%= f.label :title %><br>
-			<%= f.text_field :title %>
+			<%= f.text_field :title, class: 'form-control' %>
 		</section>
-		<section>
+		<section class="form-group">
 			<%= f.label :creator %><br>
-			<%= f.text_field :creator %>
+			<%= f.text_field :creator, class: 'form-control' %>
 		</section>
-		<section>
+		<section class="form-group">
 			<%= f.label :publication_year %><br>
-			<%= f.text_field :publication_year %>
+			<%= f.text_field :publication_year, class: 'form-control' %>
 		</section>
-		<section>
+		<section class="form-group">
 			<%= f.label :description %><br>
-			<%= f.text_field :description %>
+			<%= f.text_field :description, class: 'form-control' %>
 		</section>
-		<section>
+		<section class="form-group">
 			<%= f.label :category %><br>
 				<%= f.label :category, "Movie", :value => "movie"  %>
 				<%= f.radio_button :category, "movie" %>
@@ -36,7 +36,7 @@
 				<%= f.radio_button :category, "album" %>
 		</section>
 		<section>
-			<%= f.submit 'Add New Work' %>
+			<%= f.submit 'Add New Work', class: 'btn-secondary' %>
 		</section>
 	</div>
 <% end %>

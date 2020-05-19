@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title>Media Ranker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,25 +10,33 @@
   </head>
 
   <body>
-    <header>
+    <header class="app-header__header">
       <h1>
         <%= link_to 'Media Ranker', root_path %>
         <small>Ranking the Best of Everything</small>
       </h1>
 
-      <nav>
-        <ul>
-          <li><%= link_to 'View Top Media', root_path %></li>
-          <li><%= link_to 'View All Media', works_path %></li>
-          <li><%= link_to 'Add New Work', new_work_path %></li>
-          <li>View All Users Link</li>
+      <nav class="navbar">
+        <ul class="nav">
+          <li class="nav-item">
+            <%= link_to 'View Top Media', root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'View All Media', works_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Add New Work', new_work_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'View All Users Link', users_path, class: 'nav-link' %>
+          </li>
         </ul>
-        <ul>
-          <li>
+        <ul class="nav">
+          <li class="nav-item">
             <% if session[:user_id] %>
-              <%= link_to 'Logout', logout_path, method: :post %>
+              <%= link_to 'Logout', logout_path, method: :post, class: 'nav-link' %>
             <% else %>
-              <%= link_to 'Login', login_path %>
+              <%= link_to 'Login', login_path, class: 'nav-link' %>
             <% end %>
           </li>
         </ul>

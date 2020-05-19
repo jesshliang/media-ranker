@@ -2,8 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.spotlight h2 {
+	color: #424242;
+	font-size: 2rem;
+}
+
+.spotlight__link-to {
+	color: #26A69A;
+	text-decoration: underline;
+}
+
+.spotlight__header--prefix {
+	font-size: 2rem;
+	color: #424242;
+	font-weight: 700;
+	display: inline;
+}
+
 .top-ten__container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-column-gap: 2em;
+}
+
+.top-ten__list-container h2 {
+	border-bottom: 2px solid #B2DFDB;
+}
+
+.list-group-item {
+	border: none;
+}
+
+.list-group-item h4 a {
+	color: #26A69A;
+	font-weight: 700;
+}
+
+.list-group-item small {
+	color: slategrey;
 }

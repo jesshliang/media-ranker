@@ -1,19 +1,21 @@
 <section>
 	<h3><%= collection_name %></h3>
 
-	<table>
-		<tr>
-			<th>Votes</th>
-			<th>Title</th>
-			<th>Creator</th>
-			<th>Publication Year</th>
-			<th>Description</th>
-			<th>Upvote</th>
-		</tr>
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Votes</th>
+				<th>Title</th>
+				<th>Creator</th>
+				<th>Publication Year</th>
+				<th>Description</th>
+				<th>Upvote</th>
+			</tr>
+			</thead>
 
 			<% collection.each do |work| %>
 				<tr>
-					<td>
+					<td> 
 						<%= work.votes.count %>
 					</td>
 					<td>
@@ -32,7 +34,6 @@
 						<%= link_to "Upvote", work_votes_path(work), method: :post %>
 					</td>
 				</tr>
-
 			<% end %>
 
 	</table>

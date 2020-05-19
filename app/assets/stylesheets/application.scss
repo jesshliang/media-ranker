@@ -15,4 +15,50 @@
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
 
+@import url('https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&display=swap');
+
 @import "**/*";
+
+body {
+	color: #212529;
+	font-family: "Gudea", sans-serif;
+	font-size: 1.1em;
+}
+
+main {
+	padding: 2rem;
+}
+
+h2 {
+	color: #26A69A;
+	font-weight: 700;
+}
+
+.app-header__header {
+	max-width: 100%;
+	background-color: #B2DFDB;
+	margin-bottom: 0.5rem;
+	padding: 2rem 1rem 0.5rem;
+	text-align: center;
+}
+
+.app-header__header h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin: 25px auto 40px;
+}
+
+.app-header__header h1 a {
+	color: #FF5722;
+	padding-right: 25px;
+	margin-right: 15px;
+	border-right: white 2px solid;
+}
+
+.app-header__header small {
+	color: #fff;
+}
+
+.navbar a {
+	color: #00796B;
+}

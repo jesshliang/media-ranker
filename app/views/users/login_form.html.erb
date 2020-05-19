@@ -1,11 +1,11 @@
 <h2>Login Form</h2>
 
 <%= form_with model: @user, url: login_path do |f| %>
-	<section>
+	<section class="form-group">
 		<%= f.label :username %>
 		<%= f.text_field :username %>
 	</section>
 	<section>
-		<%= f.submit 'Login' %>
+		<%= f.submit 'Login', class: 'btn-secondary' %>
 	</section>
 <% end %>
