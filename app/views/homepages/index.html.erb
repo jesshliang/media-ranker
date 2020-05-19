@@ -13,49 +13,7 @@
 </section>
 
 <section class="top-ten__container">
-	<section class="top-ten__list-container">
-		<h2>Top Movies</h2>
-		<ul class="list-group top-ten-__list">
-			<% Work.top_movies.each do |work| %>
-			<li class="list-group-item">
-				<h4>
-					<%= link_to work.title, work_path(work.id) %>
-					<small class="top-ten__creator">by <%= work.creator %></small>
-				</h4>
-				<p><%= work.votes.count %> votes</p>
-			</li>
-			<% end %>
-		</ul>
-	</section>
-
-	<section class="top-ten__list-container">
-		<h2>Top Books</h2>
-		<ul class="list-group top-ten-__list">
-			<% Work.top_books.each do |work| %>
-			<li class="list-group-item">
-				<h4>
-					<%= link_to work.title, work_path(work.id) %>
-					<small class="top-ten__creator">by <%= work.creator %></small>
-				</h4>
-				<p><%= work.votes.count %> votes</p>
-			</li>
-			<% end %>
-		</ul>
-	</section>
-
-	<section class="top-ten__list-container">
-		<h2>Top Albums</h2>
-		<ul class="list-group top-ten-__list">
-			<% Work.top_albums.each do |work| %>
-			<li class="list-group-item">
-				<h4>
-					<%= link_to work.title, work_path(work.id) %>
-					<small class="top-ten__creator">by <%= work.creator %></small>
-				</h4>
-				<p><%= work.votes.count %> votes</p>
-			</li>
-			<% end %>
-		</ul>
-	</section>
-
+	<%= render partial: "top_of_homepage", locals: { collection: Work.top_movies, collection_name: 'Top Movies' } %>
+	<%= render partial: "top_of_homepage", locals: { collection: Work.top_books, collection_name: 'Top Books' } %>
+	<%= render partial: "top_of_homepage", locals: { collection: Work.top_albums, collection_name: 'Top Albums' } %>
 </section>

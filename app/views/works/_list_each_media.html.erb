@@ -1,0 +1,39 @@
+<section>
+	<h3><%= collection_name %></h3>
+
+	<table>
+		<tr>
+			<th>Votes</th>
+			<th>Title</th>
+			<th>Creator</th>
+			<th>Publication Year</th>
+			<th>Description</th>
+			<th>Upvote</th>
+		</tr>
+
+			<% collection.each do |work| %>
+				<tr>
+					<td>
+						<%= work.votes.count %>
+					</td>
+					<td>
+						<%= link_to work.title, work_path(work) %>
+					</td>
+					<td>
+						<%= work.creator %>
+					</td>
+					<td>
+						<%= work.publication_year %>
+					</td>
+					<td>
+						<%= work.description %>
+					</td>
+					<td>
+						Upvote
+					</td>
+				</tr>
+
+			<% end %>
+
+	</table>
+</section>
