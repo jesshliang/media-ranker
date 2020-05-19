@@ -1,16 +1,19 @@
 <h2><%= @work.title %></h2>
 <ul>
-	<li><%= @work.vote_count %> votes</li>
+	<li><strong><%= @work.vote_count %> votes</strong></li>
+	<li><strong>Created By: </strong><%= @work.creator %></li>
+	<li><strong>Published: </strong><%= @work.publication_year %></li>
+	<li><strong>Description: </strong><br><%= @work.description %></li>
 </ul>
 
-<ul>
-	<li>
-		<%= link_to "Upvote #{@work.title}", work_votes_path(@work), method: :post %>
+<ul class="nav">
+	<li class="nav-item">
+		<%= link_to "Upvote", work_votes_path(@work), method: :post, class: 'nav-link' %>
 	</li>
-	<li>
-		<%= link_to "Edit #{@work.title}", edit_work_path(@work) %>
+	<li class="nav-item">
+		<%= link_to "Edit", edit_work_path(@work), class: 'nav-link' %>
 	</li>
-	<li>
-		<%= link_to 'Delete', work_path(@work), method: :delete, data: {confirm: "Are you sure?"} %>
+	<li class="nav-item">
+		<%= link_to 'Delete', work_path(@work), method: :delete, data: {confirm: "Are you sure?"}, class: 'nav-link' %>
 	</li>
 </ul>
