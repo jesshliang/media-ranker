@@ -6,11 +6,9 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   post '/logout', to: 'users#logout', as: 'logout'
 
-  get "/users/current", to: 'users#current', as: 'current_user'
-
   resources :works do
     resources :votes, only: [:create]
   end
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
 end
