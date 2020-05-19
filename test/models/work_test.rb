@@ -27,11 +27,19 @@ describe Work do
     end
   end
 
-  # describe "relationships" do
-  #   it "" do
-    
-  #   end
-  # end
+  describe "relationships" do
+    it "work can have user" do
+      new_vote = Vote.create(user_id: User.find_by(username: 'wizard').id, work_id: Work.find_by(title: 'Dark Star').id)
+
+      expect(Work.find_by(title: 'Dark Star').users[0]).must_be_instance_of User
+    end
+
+    it "work can have vote" do
+      new_vote = Vote.create(user_id: User.find_by(username: 'witch').id, work_id: Work.find_by(title: 'Spilt Nuts').id)
+
+      expect(Work.find_by(title: 'Spilt Nuts').votes[0]).must_be_instance_of Vote
+    end 
+  end
 
   describe "validations" do
     it "must have a title" do
@@ -82,11 +90,27 @@ describe Work do
 
   describe "custom methods" do
     describe "top_media" do
-      it "chooses a single random Work if there is more than 1" do
-        expect(Work.top_media).must_be_instance_of Work
+      before do
+        @vote1 = Vote.create(user_id: users(:wizard).id, work_id: works(:postmodern).id)
+        @vote1.count_votes(works(:postmodern).id, users(:wizard).id)
+        @vote2 = Vote.create(user_id: users(:wizard).id, work_id: works(:huggy_equinox).id)
+        @vote2.count_votes(works(:huggy_equinox).id, users(:wizard).id)
+        @vote3 = Vote.create(user_id: users(:wizard).id, work_id: works(:spilt_nuts).id)
+        @vote3.count_votes(works(:spilt_nuts).id, users(:wizard).id)
+        @vote4 = Vote.create(user_id: users(:witch).id, work_id: works(:spilt_nuts).id)
+        @vote4.count_votes(works(:spilt_nuts).id, users(:witch).id)
+      end
+      
+      it "chooses the highest voted Work if there is more than 1" do
+        expect(Work.top_media.title).must_equal "Spilt Nuts"
       end
 
       it "does not select a work if there are none" do
+        Vote.destroy(@vote1.id)
+        Vote.destroy(@vote2.id)
+        Vote.destroy(@vote3.id)
+        Vote.destroy(@vote4.id)
+
         6.times do
           Work.destroy(Work.first.id)
         end
@@ -157,7 +181,6 @@ describe Work do
         end
       end
 
-
       describe "no medias" do
         before do
           6.times do
@@ -179,6 +202,35 @@ describe Work do
         
       end
 
+      describe "will order works by highest vote" do
+        before do
+          @vote1 = Vote.create(user_id: users(:wizard).id, work_id: works(:postmodern).id)
+          @vote1.count_votes(works(:postmodern).id, users(:wizard).id)
+          @vote2 = Vote.create(user_id: users(:wizard).id, work_id: works(:huggy_equinox).id)
+          @vote2.count_votes(works(:huggy_equinox).id, users(:wizard).id)
+          @vote3 = Vote.create(user_id: users(:wizard).id, work_id: works(:spilt_nuts).id)
+          @vote3.count_votes(works(:spilt_nuts).id, users(:wizard).id)
+          @vote4 = Vote.create(user_id: users(:witch).id, work_id: works(:spilt_nuts).id)
+          @vote4.count_votes(works(:spilt_nuts).id, users(:witch).id)
+        end
+
+        it "will list the highest voted work at the top for all works" do
+          expect(Work.top_media.title).must_equal 'Spilt Nuts'
+        end
+
+        it "will list the highest voted book for top books" do
+          expect(Work.top_books[0].title).must_equal 'Huggy Equinox'
+        end
+
+        it "will list the highest voted movie for top movies" do
+          expect(Work.top_movies[0].title).must_equal 'Postmodern'
+        end
+
+        it "will list the highest voted album for top albums" do
+          expect(Work.top_albums[0].title).must_equal 'Spilt Nuts'
+        end
+      
+      end
     end
 
   end
