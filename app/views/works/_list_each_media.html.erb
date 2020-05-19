@@ -29,7 +29,7 @@
 						<%= work.description %>
 					</td>
 					<td>
-						Upvote
+						<%= link_to "Upvote", work_votes_path(work), method: :post %>
 					</td>
 				</tr>
 
