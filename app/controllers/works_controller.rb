@@ -30,7 +30,7 @@ class WorksController < ApplicationController
 			redirect_to work_path(@work.id)
 			return
 		else
-			flash.now[:failure] = "#{@work.title} could not be added."
+			flash.now[:failure] = "Error: this work could not be added."
 			render :new, status: :bad_request
 			return
 		end
