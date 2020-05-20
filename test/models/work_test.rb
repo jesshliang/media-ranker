@@ -82,9 +82,7 @@ describe Work do
       work.description = nil
 
       # Assert
-      expect(work.valid?).must_equal false
-      expect(work.errors.messages).must_include :description
-      expect(work.errors.messages[:description]).must_equal ["can't be blank"]
+      expect(work.valid?).must_equal true
     end
   end
 
@@ -239,7 +237,7 @@ describe Work do
 
     describe "vote_date" do
       it "finds the correct vote date" do
-        work = Work.find_by(title: 'Dark Star')
+        work = Work.find_by(title: 'Postmodern')
         user = User.find_by(username: 'wizard')
         vote = Vote.create(user_id: user.id, work_id: work.id)
         vote_created_date = vote.created_at.strftime("%m-%d-%Y")

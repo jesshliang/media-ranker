@@ -27,11 +27,11 @@ class VotesController < ApplicationController
 				@vote.count_votes(params[:work_id], session[:user_id])
 
 				flash[:success] = 'Upvoted!'
-				redirect_to works_path
+				redirect_back fallback_location: root_path
 				return
 			else
 				flash.now[:error] = 'Error; could not be upvoted.'
-				redirect_to works_path
+				redirect_back fallback_location: root_path
 				return
 			end
 		end
