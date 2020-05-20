@@ -34,7 +34,7 @@
         <ul class="nav user-area">
           <% if session[:user_id] %>
           <li>
-            Logged in as <%= User.find_by(id: session[:user_id]).username %>
+            Logged in as <%= link_to User.current_user(session[:user_id]), user_path(session[:user_id]) %>
           </li>
           <% end %>
           <li class="nav-item">

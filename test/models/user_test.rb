@@ -53,4 +53,12 @@ describe User do
     end
   end
 
+  describe "current user" do
+    it "can find the current user" do
+      signed_in = users(:tails)
+      result = User.find_by(id: signed_in.id).username
+      expect(User.current_user(signed_in.id)).must_equal result
+    end
+  end
+
 end
