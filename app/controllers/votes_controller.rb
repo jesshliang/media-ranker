@@ -5,7 +5,7 @@ class VotesController < ApplicationController
 			vote
 		else # If the user is not signed in
 			flash[:unauthorized] = 'You cannot vote unless you are logged in.'
-			redirect_to root_path
+			redirect_back fallback_location: root_path
 			return
 		end
 	end
@@ -15,7 +15,7 @@ class VotesController < ApplicationController
 
 		if !work_votes.empty? # Has this user voted for this work before?
 			flash[:failure]  = 'You cannot vote for a work more than once.'
-			redirect_to root_path
+			redirect_back fallback_location: root_path
 			return
 		else # User is signed in AND has not voted for this specific work before.
 			@vote = Vote.new(
