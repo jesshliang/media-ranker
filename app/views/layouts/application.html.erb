@@ -31,7 +31,12 @@
             <%= link_to 'View All Users Link', users_path, class: 'nav-link' %>
           </li>
         </ul>
-        <ul class="nav">
+        <ul class="nav user-area">
+          <% if session[:user_id] %>
+          <li>
+            Logged in as <%= User.find_by(id: session[:user_id]).username %>
+          </li>
+          <% end %>
           <li class="nav-item">
             <% if session[:user_id] %>
               <%= link_to 'Logout', logout_path, method: :post, class: 'nav-link' %>
