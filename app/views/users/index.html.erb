@@ -1,5 +1,6 @@
 <h2>All Users</h2>
 
+<% if session[:user_id] %>
 <table class="table table-striped">
 		<thead class="thead-dark">
 			<tr>
@@ -24,3 +25,6 @@
 			<% end %>
 
 	</table>
+<% else %>
+<h3>You must be logged in to view this page.</h3>
+<% end %>
